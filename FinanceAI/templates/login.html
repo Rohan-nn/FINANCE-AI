@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FinanceAI Login</title>
+<link rel="stylesheet" href="/static/style.css">
+
+<style>
+body{
+margin:0;
+font-family:Segoe UI, sans-serif;
+background:linear-gradient(135deg,#020617,#0f172a,#020617);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+/* center box */
+.login-container{
+display:flex;
+width:900px;
+height:520px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 0 40px rgba(59,130,246,.3);
+}
+
+/* left panel */
+.left{
+flex:1;
+background:linear-gradient(160deg,#3b82f6,#06b6d4);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:40px;
+}
+
+.left h1{
+font-size:36px;
+margin-bottom:10px;
+}
+
+.left p{
+opacity:.9;
+text-align:center;
+}
+
+/* right login */
+.right{
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:50px;
+}
+
+.right h2{
+margin-bottom:25px;
+font-size:28px;
+}
+
+input{
+width:260px;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+border:none;
+background:#1f2937;
+color:white;
+font-size:15px;
+}
+
+button{
+width:280px;
+padding:12px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+background:#3b82f6;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:translateY(-2px);
+box-shadow:0 0 20px rgba(59,130,246,.6);
+}
+
+.note{
+margin-top:15px;
+font-size:13px;
+opacity:.6;
+text-align:center;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="login-container">
+
+<!-- LEFT SIDE -->
+<div class="left">
+<h1>FinanceAI</h1>
+<p>Smart Expense & Income Tracker</p>
+<p style="margin-top:20px;font-size:14px;opacity:.8">
+Track spending • Analyze habits • Build savings
+</p>
+</div>
+
+<!-- RIGHT SIDE LOGIN -->
+<div class="right">
+<h2>Login / Register</h2>
+
+<form method="POST">
+<input name="username" placeholder="Enter username" required>
+<input name="password" placeholder="Enter password" required>
+<button>Enter Dashboard</button>
+</form>
+
+<div class="note">
+New user? Just login with any username.<br>
+Account auto-creates.
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

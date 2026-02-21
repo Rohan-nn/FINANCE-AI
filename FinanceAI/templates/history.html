@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>History</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+<div class="sidebar">
+<h2>FinanceAI</h2>
+<a href="/">Dashboard</a>
+<a href="/analytics">Analytics</a>
+<a href="/history">History</a>
+<a href="/logout">Logout</a>
+</div>
+
+<div class="main">
+<h1>History</h1>
+
+<div class="card">
+<table>
+<tr><th>Title</th><th>Amount</th><th>Category</th><th>Date</th></tr>
+{% for r in rows %}
+<tr>
+<td>{{r[0]}}</td>
+<td>₹{{r[1]}}</td>
+<td>{{r[2]}}</td>
+<td>{{r[3]}}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+</div>
+</body>
+</html>

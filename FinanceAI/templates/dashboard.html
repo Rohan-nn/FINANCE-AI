@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FinanceAI Pro</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="sidebar">
+<h2>FinanceAI</h2>
+<a href="/">Dashboard</a>
+<a href="/export">Export CSV</a>
+<a href="/logout">Logout</a>
+</div>
+
+<div class="main">
+
+<!-- HEADER -->
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px">
+<h1>Financial Dashboard</h1>
+<div style="opacity:.7">Smart Finance Panel</div>
+</div>
+
+<!-- STATS -->
+<div class="cards">
+
+<div class="card glass">
+<h3>Total Balance</h3>
+<h2>₹{{balance}}</h2>
+</div>
+
+<div class="card glass">
+<h3>Total Income</h3>
+<h2>₹{{income}}</h2>
+</div>
+
+<div class="card glass">
+<h3>Total Expense</h3>
+<h2>₹{{expense}}</h2>
+</div>
+
+</div>
+
+<!-- ADD -->
+<div class="card glass">
+<h3>Add Transaction</h3>
+<form method="POST">
+<select name="type">
+<option value="income">Income</option>
+<option value="expense">Expense</option>
+</select>
+
+<input name="title" placeholder="Title" required>
+<input name="amount" placeholder="Amount" required>
+
+<select name="category">
+<option>Food</option>
+<option>Travel</option>
+<option>Bills</option>
+<option>Shopping</option>
+<option>Other</option>
+</select>
+
+<button>Add</button>
+</form>
+</div>
+
+<!-- INSIGHT -->
+<div class="card glass">
+<h3>AI Financial Insight</h3>
+<p>{{insight}}</p>
+</div>
+
+<!-- SAVINGS + PREDICTION -->
+<div class="cards">
+
+<div class="card glass">
+<h3>Suggested Savings</h3>
+<p>Save at least 20% of income</p>
+<h2>₹{{savings_goal}}</h2>
+</div>
+
+<div class="card glass">
+<h3>Next Month Prediction</h3>
+<p>Estimated spending trend</p>
+<h2>₹{{prediction}}</h2>
+</div>
+
+</div>
+
+<!-- CHART -->
+<div class="card glass">
+<h3>Spending by Category</h3>
+<canvas id="chart"></canvas>
+</div>
+
+<!-- RECENT -->
+<div class="card glass">
+<h3>Recent Transactions</h3>
+
+{% for d in data[:8] %}
+<div style="display:flex;justify-content:space-between;border-bottom:1px solid #222;padding:10px 0">
+<span>{{d[3]}} ({{d[5]}})</span>
+
+<div style="display:flex;gap:12px;align-items:center">
+<span>₹{{d[4]}}</span>
+<a href="/delete/{{d[0]}}" style="color:#ef4444;text-decoration:none;font-weight:bold">✕</a>
+</div>
+
+</div>
+{% endfor %}
+
+</div>
+
+</div>
+
+<script>
+let labels={{labels|safe}};
+let values={{values|safe}};
+
+new Chart(document.getElementById("chart"),{
+type:"doughnut",
+data:{labels:labels,datasets:[{data:values}]},
+options:{plugins:{legend:{labels:{color:"white"}}}}
+});
+</script>
+
+</body>
+</html>
